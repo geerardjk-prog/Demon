@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Configuración · Demon Hunters K-Pop</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#FF2D78;--cyan:#00F5FF;--yellow:#FFE600;--deep:#08001A;--card:#0E0022;--muted:#8B7AAA;--text:#F0E6FF;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--deep);color:var(--text);font-family:'Noto Sans KR',sans-serif;line-height:1.7;}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,7vw,58px);letter-spacing:5px;color:#fff;text-shadow:0 0 30px rgba(255,45,120,.4);margin-bottom:6px;}
+.subtitle{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:40px;}
+.step{background:var(--card);border:1px solid rgba(255,45,120,.15);border-radius:12px;padding:28px;margin-bottom:20px;position:relative;}
+.step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:12px 12px 0 0;background:linear-gradient(90deg,var(--pink),var(--cyan));}
+.step-num{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--pink);background:rgba(255,45,120,.1);border:1px solid var(--pink);padding:2px 10px;border-radius:2px;display:inline-block;margin-bottom:12px;}
+.step-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:#fff;margin-bottom:14px;}
+p{color:var(--muted);font-size:14px;margin-bottom:12px;}
+p strong{color:var(--text);}
+.code-block{background:rgba(0,0,0,.5);border:1px solid rgba(0,245,255,.2);border-radius:8px;padding:14px 18px;font-family:'Space Mono',monospace;font-size:12px;color:var(--cyan);margin:12px 0;overflow-x:auto;white-space:pre;line-height:1.6;}
+.highlight{background:rgba(255,230,0,.06);border-left:3px solid var(--yellow);border-radius:0 6px 6px 0;padding:12px 16px;font-size:13px;color:var(--text);margin:14px 0;}
+.highlight strong{color:var(--yellow);}
+.success{background:rgba(74,222,128,.07);border-left:3px solid #4ade80;border-radius:0 6px 6px 0;padding:12px 16px;font-size:13px;color:#4ade80;margin:14px 0;}
+ul{color:var(--muted);font-size:14px;padding-left:20px;}
+ul li{margin-bottom:8px;}
+ul li strong{color:var(--text);}
+.tag{display:inline-block;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;padding:2px 8px;border-radius:4px;margin:0 2px;}
+.tag.firebase{background:rgba(255,160,0,.1);color:#FFA000;border:1px solid rgba(255,160,0,.3);}
+.tag.mp{background:rgba(0,158,227,.1);color:#009EE3;border:1px solid rgba(0,158,227,.3);}
+.tag.free{background:rgba(74,222,128,.1);color:#4ade80;border:1px solid rgba(74,222,128,.3);}
+a{color:var(--cyan);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,45,120,.3),transparent);margin:32px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>GUÍA DE CONFIGURACIÓN</h1>
+<div class="subtitle">Demon Hunters K-Pop · Sistema de Boletos</div>
+
+<div class="highlight">
+  <strong>Tiempo estimado:</strong> 20-30 minutos. Sigues esta guía una sola vez y el sistema queda listo para todas las funciones.
+</div>
+
+<!-- PASO 1: FIREBASE -->
+
+<div class="step">
+  <div class="step-num">PASO 01</div>
+  <div class="step-title">Crear proyecto Firebase <span class="tag firebase">GRATIS</span></div>
+  <p>Firebase es la base de datos que guarda los boletos vendidos en tiempo real. El plan gratuito es más que suficiente para tu evento.</p>
+  <ul>
+    <li>Ve a <a href="https://console.firebase.google.com" target="_blank">console.firebase.google.com</a></li>
+    <li>Clic en <strong>"Agregar proyecto"</strong> → ponle nombre (ej: <em>demon-hunters-kpop</em>)</li>
+    <li>Desactiva Google Analytics (no es necesario) → <strong>"Crear proyecto"</strong></li>
+    <li>Espera ~30 segundos hasta que diga "Tu nuevo proyecto está listo"</li>
+  </ul>
+</div>
+
+<!-- PASO 2: FIRESTORE -->
+
+<div class="step">
+  <div class="step-num">PASO 02</div>
+  <div class="step-title">Activar Firestore Database</div>
+  <p>Firestore es la base de datos donde se guardan boletos e inventario.</p>
+  <ul>
+    <li>En el menú izquierdo de Firebase → <strong>"Firestore Database"</strong></li>
+    <li>Clic en <strong>"Crear base de datos"</strong></li>
+    <li>Selecciona <strong>"Comenzar en modo de prueba"</strong> (suficiente para el evento)</li>
+    <li>Elige la región <strong>us-central1</strong> o la más cercana a México → <strong>"Habilitar"</strong></li>
+  </ul>
+
+  <p style="margin-top:14px"><strong>Reglas de seguridad</strong> — En Firestore → pestaña "Reglas", pega esto y publica:</p>
+  <div class="code-block">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Cualquiera puede leer inventario
+    match /kpop_show/inventory {
+      allow read: true;
+      allow write: true;
+    }
+    // Cualquiera puede crear y leer órdenes propias
+    match /kpop_show/orders/{orderId} {
+      allow read, write: true;
+    }
+  }
+}</div>
+  <div class="highlight"><strong>Nota:</strong> Estas reglas son permisivas para facilitar el setup. Para mayor seguridad, puedes restringirlas después del evento.</div>
+</div>
+
+<!-- PASO 3: CREDENCIALES -->
+
+<div class="step">
+  <div class="step-num">PASO 03</div>
+  <div class="step-title">Obtener las credenciales de Firebase</div>
+  <ul>
+    <li>En el panel de Firebase → ícono de engranaje ⚙ → <strong>"Configuración del proyecto"</strong></li>
+    <li>Baja hasta <strong>"Tus apps"</strong> → clic en el ícono <strong>&lt;/&gt;</strong> (Web)</li>
+    <li>Ponle un apodo (ej: <em>boletos-web</em>) → <strong>"Registrar app"</strong></li>
+    <li>Copia el bloque <code>firebaseConfig</code> que aparece. Se ve así:</li>
+  </ul>
+  <div class="code-block">const firebaseConfig = {
+  apiKey:            "AIzaSy...",
+  authDomain:        "demon-hunters.firebaseapp.com",
+  projectId:         "demon-hunters-kpop",
+  storageBucket:     "demon-hunters-kpop.appspot.com",
+  messagingSenderId: "123456789",
+  appId:             "1:123456789:web:abc123"
+};</div>
+  <p><strong>Pega este bloque reemplazando el que viene en ambos archivos:</strong> <code>demon-hunters-boletos.html</code> y <code>demon-hunters-admin.html</code></p>
+  <div class="success">✓ Una vez pegado, Firebase queda conectado. Los boletos se guardan automáticamente.</div>
+</div>
+
+<!-- PASO 4: MERCADOPAGO -->
+
+<div class="step">
+  <div class="step-num">PASO 04</div>
+  <div class="step-title">Crear Links de Pago en MercadoPago <span class="tag mp">MP</span></div>
+  <p>Necesitas crear 3 links de pago (uno por zona). MercadoPago cobrará una comisión de ~3.49% por transacción aprobada.</p>
+  <ul>
+    <li>Entra a <a href="https://www.mercadopago.com.mx" target="_blank">mercadopago.com.mx</a> con tu cuenta de negocio</li>
+    <li>Ve a <strong>Cobrar → Cobros en línea → Link de pago</strong></li>
+    <li>Selecciona <strong>"Monto variable"</strong> (para que el total cambie según qty y descuento)</li>
+    <li>Crea 3 links y nómbralos: <em>Boleto VIP</em>, <em>Boleto Preferente</em>, <em>Boleto 2do Piso</em></li>
+    <li>Copia cada URL y pégala en el archivo <code>demon-hunters-boletos.html</code> en la sección <code>MP_LINKS</code></li>
+  </ul>
+  <div class="code-block">const MP_LINKS = {
+  vip:  "https://mpago.la/TU_LINK_VIP",
+  pref: "https://mpago.la/TU_LINK_PREF",
+  seg:  "https://mpago.la/TU_LINK_SEG",
+};</div>
+  <div class="highlight">
+    <strong>URL de retorno:</strong> En la configuración de cada link de MercadoPago, configura la URL de retorno apuntando a donde subas tu archivo. Por ejemplo:<br>
+    <code style="color:var(--cyan)">https://tudominio.com/boletos.html</code><br>
+    Esto hace que después del pago el comprador vuelva a ver su QR automáticamente.
+  </div>
+</div>
+
+<!-- PASO 5: DESCUENTOS -->
+
+<div class="step">
+  <div class="step-num">PASO 05</div>
+  <div class="step-title">Configurar tus Códigos de Descuento</div>
+  <p>Edita este bloque en <code>demon-hunters-boletos.html</code> para cambiar el código o el porcentaje cuando lo necesites:</p>
+  <div class="code-block">const DISCOUNT_CODES = [
+  { code: "KPOP2025", pct: 20, label: "20% de descuento" },
+  // Para agregar más en el futuro, descomenta y edita:
+  // { code: "OTRO_CODIGO", pct: 15, label: "Descripción" },
+];</div>
+  <p>El código es <strong>insensible a mayúsculas</strong> — el usuario puede escribir <em>kpop2025</em> o <em>KPOP2025</em> y funciona igual.</p>
+</div>
+
+<!-- PASO 6: PUBLICAR -->
+
+<div class="step">
+  <div class="step-num">PASO 06</div>
+  <div class="step-title">Publicar los archivos (hosting gratuito)</div>
+  <p>La forma más fácil es usar <strong>Netlify Drop</strong> — sin registro necesario:</p>
+  <ul>
+    <li>Ve a <a href="https://app.netlify.com/drop" target="_blank">app.netlify.com/drop</a></li>
+    <li>Arrastra los 3 archivos HTML a la zona de drop</li>
+    <li>En segundos te da una URL pública tipo <code>magical-name-123.netlify.app</code></li>
+    <li>Esa URL la compartes en redes, WhatsApp y con las escuelas</li>
+    <li>El admin queda en <code>tu-url.netlify.app/demon-hunters-admin.html</code></li>
+  </ul>
+  <div class="highlight">
+    <strong>Tip:</strong> Para tener una URL personalizada (ej: <em>demonhunters.netlify.app</em>), crea una cuenta gratis en Netlify y puedes elegir el nombre del subdominio.
+  </div>
+</div>
+
+<!-- PASO 7: ADMIN -->
+
+<div class="step">
+  <div class="step-num">PASO 07</div>
+  <div class="step-title">Usar el Panel de Administrador</div>
+  <p>El archivo <code>demon-hunters-admin.html</code> te da acceso a:</p>
+  <ul>
+    <li><strong>KPIs en tiempo real:</strong> Ingreso total, boletos vendidos, % de ocupación</li>
+    <li><strong>Disponibilidad por función y zona</strong> con barras de progreso</li>
+    <li><strong>Tabla de todas las órdenes</strong> con filtros por función, zona y estado</li>
+    <li><strong>Exportar CSV</strong> para llevar tu contaduría en Excel</li>
+  </ul>
+  <p>La contraseña por defecto es <strong><code>demonhunters2025</code></strong>. Cámbiala en el archivo buscando:</p>
+  <div class="code-block">const ADMIN_PASSWORD = "demonhunters2025"; // ← cambia esto</div>
+  <div class="success">✓ El panel se actualiza en tiempo real — cada vez que alguien compra, lo ves aparecer al instante sin recargar la página.</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="highlight">
+  <strong>Resumen de archivos:</strong><br><br>
+  📄 <strong>demon-hunters-boletos.html</strong> — La tienda pública que compartes con compradores<br>
+  📊 <strong>demon-hunters-admin.html</strong> — Tu panel privado de contaduría<br>
+  📖 <strong>demon-hunters-guia.html</strong> — Esta guía (puedes borrarla después)
+</div>
+
+</div>
+</body>
+</html>
