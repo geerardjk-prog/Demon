@@ -58,7 +58,7 @@ nav {
 position: sticky;
 top: 0;
 z-index: 100;
-background: rgba(10,10,10,0.92);
+background: rgba(10,10,10,0.98);
 backdrop-filter: blur(12px);
 border-bottom: 1px solid var(–border);
 padding: 0 clamp(20px, 5vw, 60px);
@@ -270,6 +270,7 @@ align-items: center;
 gap: 20px;
 padding: 0 clamp(24px, 8vw, 100px);
 margin: 0;
+background: var(–dark);
 }
 
 .sdl { flex: 1; height: 1px; background: linear-gradient(90deg, var(–gold), transparent); }
@@ -281,6 +282,7 @@ section {
 position: relative;
 z-index: 1;
 padding: clamp(60px, 8vh, 100px) clamp(24px, 8vw, 100px);
+background: var(–dark);
 }
 
 .section-label {
@@ -344,6 +346,7 @@ letter-spacing: 1px;
 
 /* ── PRICING ── */
 .pricing-section { background: var(–black); }
+section { background: var(–dark); }
 
 .pricing-grid {
 display: grid;
@@ -568,6 +571,7 @@ transition: border-color 0.2s;
 
 /* ── FOOTER ── */
 footer {
+background: var(–black);
 border-top: 1px solid var(–border);
 padding: clamp(24px, 4vh, 40px) clamp(24px, 8vw, 100px);
 display: flex;
