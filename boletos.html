@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -8,6 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <!-- Firebase -->
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, serverTimestamp }
@@ -28,15 +30,9 @@ const firebaseConfig = {
 };
 
 // ══════════════════════════════════════════════════════════════
-//  ② LINKS DE MERCADOPAGO — crea un "Link de pago" por zona
-//     en tu cuenta MP (Cobrar > Link de pago > monto variable)
-//     y pega las URLs aquí:
+//  ② LINK DE MERCADOPAGO — monto libre (el comprador ingresa el total)
 // ══════════════════════════════════════════════════════════════
-const MP_LINKS = {
-  vip:  "https://mpago.la/2H1aTRj",
-  pref: "https://mpago.la/1Arx74d",
-  seg:  "https://mpago.la/1tCpeiY",
-};
+const MP_LINK = "https://link.mercadopago.com.mx/demontickets";
 
 // ══════════════════════════════════════════════════════════════
 //  ③ CÓDIGO DE DESCUENTO — código único fijo 20%
@@ -142,6 +138,7 @@ function render() {
     return;
   }
 
+  if (state.step === "pay_instructions") { app.innerHTML = renderPayInstructions(); return; }
   if (state.step === 4 && state.ticket) { app.innerHTML = renderTicket(); generateQR(); return; }
 
   let html = `
@@ -286,6 +283,51 @@ function renderFinalSummary() {
     </div>`;
 }
 
+function renderPayInstructions() {
+  const zone = ZONES.find(z=>z.id===state.zone);
+  const show = SHOWS.find(s=>s.id===state.show);
+  const total = finalTotal();
+  return `
+  <div class="ticket-wrap" style="text-align:center">
+    <div style="font-size:36px;margin-bottom:10px">💳</div>
+    <div class="ticket-title">INSTRUCCIONES DE PAGO</div>
+    <div class="ticket-sub">Sigue estos pasos para completar tu compra</div>
+
+    <div style="background:rgba(255,230,0,.08);border:2px solid var(--yellow);border-radius:12px;padding:20px;margin:20px 0">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--muted);margin-bottom:8px">MONTO EXACTO A PAGAR</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--yellow);text-shadow:0 0 20px rgba(255,230,0,.5);letter-spacing:2px">$${total.toLocaleString()}</div>
+      <div style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);margin-top:4px">MXN · ${zone.label} × ${state.qty} boleto${state.qty>1?'s':''}</div>
+    </div>
+
+    <div style="background:rgba(0,0,0,.3);border-radius:10px;padding:16px;text-align:left;margin-bottom:20px">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:#fff;margin-bottom:12px">PASOS A SEGUIR:</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="background:var(--pink);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:14px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+          <div style="font-size:13px;color:var(--text)">Toca el botón <strong>"IR A MERCADOPAGO"</strong> aquí abajo</div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="background:var(--pink);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:14px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+          <div style="font-size:13px;color:var(--text)">En MercadoPago ingresa el monto exacto: <strong style="color:var(--yellow)">$${total.toLocaleString()}</strong></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div style="background:var(--pink);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:14px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+          <div style="font-size:13px;color:var(--text)">Completa el pago y regresa a esta página para recibir tu boleto QR</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.2);border-radius:8px;padding:12px;margin-bottom:20px;font-size:12px;color:var(--muted)">
+      ⚠️ <strong style="color:#fff">Importante:</strong> El monto debe coincidir exactamente con <strong style="color:var(--yellow)">$${total.toLocaleString()} MXN</strong> para que tu compra sea validada.
+    </div>
+
+    <button class="btn-primary" onclick="window.goToMP()">
+      IR A MERCADOPAGO · $${total.toLocaleString()} MXN →
+    </button>
+    <button class="btn-secondary" onclick="window.resetApp()">← REGRESAR</button>
+  </div>`;
+}
+
 function renderTicket() {
   const t = state.ticket;
   return `
@@ -344,7 +386,6 @@ window.handlePay = async () => {
   if (!name||!email||!phone) { state.error="Por favor completa todos los campos."; render(); return; }
   state.error=""; state.loading=true; render();
 
-  // Guardar orden pendiente en Firebase antes de redirigir
   const orderId = "KP-" + Math.random().toString(36).slice(2,8).toUpperCase();
   try {
     await setDoc(doc(db,"kpop_show","orders",orderId), {
@@ -358,20 +399,26 @@ window.handlePay = async () => {
       createdAt: serverTimestamp(),
     });
 
-    // Guardar en sessionStorage para recuperar al volver de MP
     sessionStorage.setItem("kpop_order", JSON.stringify({
       id: orderId, show: state.show, zone: state.zone,
       qty: state.qty, form: state.form,
       discount: state.discount, total: finalTotal(),
     }));
 
-    // Redirigir a MercadoPago
-    window.location.href = MP_LINKS[state.zone];
+    // Mostrar pantalla de instrucciones con el monto exacto
+    state.loading = false;
+    state.step = "pay_instructions";
+    state.pendingOrderId = orderId;
+    render();
 
   } catch(e) {
     state.error = "Error al procesar. Intenta de nuevo.";
     state.loading = false; render();
   }
+};
+
+window.goToMP = () => {
+  window.location.href = MP_LINK;
 };
 
 window.resetApp = () => {
@@ -443,6 +490,7 @@ checkReturnFromMP().then(wasReturn => {
   if (!wasReturn) loadSoldData();
 });
 </script>
+
 </head>
 
 <body>
@@ -581,5 +629,6 @@ input::placeholder{color:rgba(139,122,170,.5);}
 @keyframes spin{to{transform:rotate(360deg)}}
 .mp-badge{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;opacity:.5;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);}
 </style>
+
 </body>
 </html>
