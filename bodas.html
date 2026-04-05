@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bodas y XV Años · Studio B</title>
+<link rel="stylesheet" href="sb.css">
+</head>
+<body>
+
+<!-- MODAL -->
+<div class="sb-modal-ov" id="sb-modal">
+  <div class="sb-modal">
+    <button class="sb-modal-x" onclick="closeModal()">&#215;</button>
+    <h3>Solicitar información</h3>
+    <p class="sb-modal-sub">Studio B · Ciudad de México</p>
+    <form action="https://formspree.io/f/xnjozedb" method="POST">
+      <input type="hidden" name="_subject" value="Solicitud Studio B">
+      <div class="fg-row">
+        <div class="fg"><label>Nombre</label><input type="text" name="nombre" required placeholder="Su nombre"></div>
+        <div class="fg"><label>Teléfono</label><input type="tel" name="telefono" placeholder="+52 55 0000 0000"></div>
+      </div>
+      <div class="fg"><label>Correo electrónico</label><input type="email" name="email" required placeholder="correo@ejemplo.com"></div>
+      <div class="fg">
+        <label>Servicio de interés</label>
+        <select name="servicio" id="modal-servicio">
+          <optgroup label="Producciones"><option value="Confesiones de Opera">Confesiones de Ópera</option><option value="Luces de Broadway">Luces de Broadway</option><option value="Un Viaje En-Cantador">Un Viaje En-Cantador</option></optgroup>
+          <optgroup label="Servicios Musicales"><option value="Gala Operistica">Gala Operística</option><option value="Noche de Boleros">Noche de Boleros</option><option value="Cuarteto Vocal">Cuarteto Vocal</option><option value="Noche Bohemia">Noche Bohemia</option><option value="Concierto Navideno">Concierto Navideño</option><option value="Concierto Corporativo">Concierto Corporativo</option></optgroup>
+          <optgroup label="Danza y Show"><option value="Show Danza Contemporanea">Danza Contemporánea</option><option value="Show Jazz">Jazz / Show Dance</option><option value="Ballet">Ballet Clásico</option><option value="Folclor">Folclor Mexicano</option><option value="Fusion">Fusión Danza+Canto</option></optgroup>
+          <optgroup label="Bodas y XV"><option value="Musica Ceremonia">Música Ceremonia</option><option value="Coctel Musical">Cóctel Musical</option><option value="Cena Espectaculo">Cena con Espectáculo</option><option value="Show Boda">Show Boda</option><option value="XV Anos">XV Años</option><option value="Serenata">Serenata</option></optgroup>
+          <optgroup label="Talleres"><option value="Taller Teatro">Teatro</option><option value="Taller Canto">Canto</option><option value="Taller Danza">Danza</option><option value="Taller Musica">Música</option><option value="Taller Cine">Cine</option><option value="Taller LSM">LSM aplicada al Arte</option><option value="Taller Expresion">Expresión Corporal</option><option value="Taller Creacion Escenica">Creación Escénica</option></optgroup>
+          <option value="Otro">Cotización general</option>
+        </select>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Ciudad</label><input type="text" name="ciudad" placeholder="Ciudad de México..."></div>
+        <div class="fg"><label>Fecha aproximada</label><input type="text" name="fecha" placeholder="Mes / año"></div>
+      </div>
+      <div class="fg"><label>Mensaje</label><textarea name="mensaje" placeholder="Cuéntenos sobre su evento..."></textarea></div>
+      <button type="submit" class="form-submit">Enviar solicitud →</button>
+      <p class="form-note">Respondemos en menos de 48 horas · +52 55 7860 0131</p>
+    </form>
+  </div>
+</div>
+
+<nav class="sb-nav">
+  <a href="index.html" class="sb-logo">STUDIO <span>B</span></a>
+  <ul class="sb-nav-links">
+    <li><a href="producciones.html">Producciones</a></li>
+    <li><a href="musica.html">Música</a></li>
+    <li><a href="danza.html">Danza</a></li>
+    <li><a href="bodas.html">Bodas & XV</a></li>
+    <li><a href="talleres.html">Talleres</a></li>
+    <li><a href="taller-escenico.html">Taller Escénico</a></li>
+    <li><a href="#" onclick="openModal('Otro');return false;" class="nav-cta">Contratar →</a></li>
+  </ul>
+  <button class="sb-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="page-hero" style="background:radial-gradient(ellipse at 50% 55%,rgba(139,58,42,.28) 0%,transparent 65%),linear-gradient(180deg,#120c09,#0E0D0B);">
+  <p class="sb-eyebrow" style="animation:fadeUp .8s ease .1s both;opacity:0;">Studio B · Eventos Sociales</p>
+  <h1>BO<em>DAS</em><br>& XV</h1>
+  <p>Arte real para el día más importante. No somos animadores: somos artistas con formación de élite.</p>
+</header>
+<section class="sb-section">
+  <span class="sb-label reveal">Bodas · XV Años · Celebraciones</span>
+  <h2 class="sb-title reveal">El lujo de tener<br><em>artistas reales</em></h2>
+  <div class="sb-rule reveal"></div>
+  <p class="reveal" style="font-size:.95rem;color:rgba(245,239,224,.7);max-width:600px;margin-bottom:3rem;">Ceremonia, cóctel, cena con espectáculo, vals, shows de XV, serenatas y coreografías. Cada propuesta se diseña exclusivamente para tu evento y tu historia.</p>
+  <div class="sb-grid" style="gap:1.2rem;">
+<div class="svc-card reveal">
+  <div class="svc-card-name">Música para Ceremonia</div>
+  <p class="svc-card-desc">Acompañamiento en vivo para entrada, momentos clave y salida de la ceremonia. Repertorio clásico, romántico o contemporáneo según los novios. La voz de un artista profesional eleva cada segundo.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">1 a 2 cantantes + piano o violín</span>
+    <span class="svc-pill">45 – 75 min</span>
+  </div>
+  <span class="svc-price">$12,000 — $22,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Musica Ceremonia')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Cóctel Musical</div>
+  <p class="svc-card-desc">Música de alta calidad como ambiente durante la recepción. Ópera, boleros románticos, jazz o mezcla personalizada. Elegante e irrepetible.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">1 a 2 cantantes + piano</span>
+    <span class="svc-pill">60 – 90 min</span>
+  </div>
+  <span class="svc-price">$12,000 — $20,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Coctel Musical')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Cena con Espectáculo</div>
+  <p class="svc-card-desc">Show escénico durante la cena: música en vivo, interacción con invitados y momentos coreografiados. El punto alto de la noche. Alterna números musicales con show y participación.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">3 a 6 artistas</span>
+    <span class="svc-pill">60 – 90 min</span>
+  </div>
+  <span class="svc-price">$28,000 — $50,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Cena Espectaculo')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Show Central de Boda</div>
+  <p class="svc-card-desc">Espectáculo completo de teatro musical, ópera pop o show de danza y canto como número central de la noche. Con canciones significativas para los novios y participación del público.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">4 a 8 artistas + músicos</span>
+    <span class="svc-pill">45 – 75 min</span>
+  </div>
+  <span class="svc-price">$35,000 — $65,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Show Boda')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Serenata Sorpresa</div>
+  <p class="svc-card-desc">Serenata personalizada para sorprender a la pareja. Canciones elegidas por el cliente, presentación emotiva, posible integración con video o fotografía.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">2 a 3 cantantes + piano o guitarra</span>
+    <span class="svc-pill">20 – 35 min</span>
+  </div>
+  <span class="svc-price">$10,000 — $18,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Serenata')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Coreografía Original para Boda</div>
+  <p class="svc-card-desc">Pieza coreográfica exclusiva: apertura del baile, sorpresa de los novios o número especial. Puede incluir participación de los novios si lo desean.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">2 a 4 bailarinas</span>
+    <span class="svc-pill">8 – 15 min</span>
+  </div>
+  <span class="svc-price">$15,000 — $25,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Coreografia Boda')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Paquete Boda Completa</div>
+  <p class="svc-card-desc">Ceremonia + cóctel + cena con espectáculo en un solo contrato. Un solo punto de contacto y coherencia artística de principio a fin. El regalo más elegante que pueden darse.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">3 a 6 artistas</span>
+    <span class="svc-pill">Todo el evento</span>
+  </div>
+  <span class="svc-price">Desde $45,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Paquete Boda')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Vals de XV Años</div>
+  <p class="svc-card-desc">Diseño y montaje del vals principal con la quinceañera y su chambelán. Clases de ensayo incluidas (mínimo 3 sesiones). Estilos: clásico, moderno, temático o fusión.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">1 coreógrafa + grupo</span>
+    <span class="svc-pill">3 sesiones + presentación</span>
+  </div>
+  <span class="svc-price">$12,000 — $20,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('XV Anos Vals')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Entrada Sorpresa · XV Años</div>
+  <p class="svc-card-desc">Número de danza o teatro musical como entrada espectacular de la quinceañera. Alta energía, coreografía profesional. El momento que todos van a grabar.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">2 a 4 bailarinas profesionales</span>
+    <span class="svc-pill">8 – 15 min</span>
+  </div>
+  <span class="svc-price">$14,000 — $22,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('XV Anos')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Show XV Años</div>
+  <p class="svc-card-desc">Show completo de danza, canto y teatro musical como número central de la fiesta. Puede tematizarse (Disney, Broadway, pop). Incluye interacción con la festejada.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">3 a 6 artistas</span>
+    <span class="svc-pill">30 – 60 min</span>
+  </div>
+  <span class="svc-price">$22,000 — $40,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('XV Anos Show')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Serenata de Gala</div>
+  <p class="svc-card-desc">Para cumpleaños especiales, aniversarios, pedidas de mano. Repertorio personalizado y presentación elegante.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">1 a 3 cantantes + piano</span>
+    <span class="svc-pill">20 – 40 min</span>
+  </div>
+  <span class="svc-price">$6,000 — $15,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Serenata Gala')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div></div>
+  <div style="margin-top:1.5rem;padding:1.2rem;background:var(--ink-soft);border:1px solid rgba(201,168,76,.1);">
+    <p style="font-size:.78rem;color:var(--mist);text-align:center;">* MXN sin IVA · Viáticos $5,000 fuera de CDMX · Cotizaciones personalizadas disponibles</p>
+  </div>
+</section>
+
+<footer class="sb-footer">
+  <div class="sb-footer-inner">
+    <div class="sb-footer-brand">
+      <a href="index.html" class="sb-logo">STUDIO <span>B</span></a>
+      <p>Producción escénica profesional. Música, teatro y danza para todo tipo de evento. Ciudad de México y toda la república.</p>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Producciones</h4>
+      <a href="producciones.html">Confesiones de Ópera</a>
+      <a href="producciones.html">Luces de Broadway</a>
+      <a href="producciones.html">Un Viaje En-Cantador</a>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Servicios</h4>
+      <a href="musica.html">Servicios Musicales</a>
+      <a href="danza.html">Danza y Show</a>
+      <a href="bodas.html">Bodas y XV Años</a>
+      <a href="talleres.html">Talleres y Cursos</a>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Contacto</h4>
+      <p>+52 55 7860 0131</p>
+      <p>+52 55 4546 2453</p>
+      <a href="https://instagram.com/ensambleb_" target="_blank">@ensambleb_</a>
+      <a href="#" onclick="openModal('Otro');return false;" style="margin-top:.8rem;color:var(--gold);">Solicitar cotización →</a>
+    </div>
+  </div>
+  <div class="sb-footer-bottom">
+    <p>© 2026 Studio B · Ciudad de México · Todos los derechos reservados</p>
+    <p>Artistas egresados de ENAT · ESM · INBAL</p>
+  </div>
+</footer>
+<script src="sb.js"></script>
+
+</body></html>

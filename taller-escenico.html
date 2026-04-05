@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taller de Creación Escénica · Studio B</title>
+<link rel="stylesheet" href="sb.css">
+</head>
+<body>
+
+<!-- MODAL -->
+<div class="sb-modal-ov" id="sb-modal">
+  <div class="sb-modal">
+    <button class="sb-modal-x" onclick="closeModal()">&#215;</button>
+    <h3>Solicitar información</h3>
+    <p class="sb-modal-sub">Studio B · Ciudad de México</p>
+    <form action="https://formspree.io/f/xnjozedb" method="POST">
+      <input type="hidden" name="_subject" value="Solicitud Studio B">
+      <div class="fg-row">
+        <div class="fg"><label>Nombre</label><input type="text" name="nombre" required placeholder="Su nombre"></div>
+        <div class="fg"><label>Teléfono</label><input type="tel" name="telefono" placeholder="+52 55 0000 0000"></div>
+      </div>
+      <div class="fg"><label>Correo electrónico</label><input type="email" name="email" required placeholder="correo@ejemplo.com"></div>
+      <div class="fg">
+        <label>Servicio de interés</label>
+        <select name="servicio" id="modal-servicio">
+          <optgroup label="Producciones"><option value="Confesiones de Opera">Confesiones de Ópera</option><option value="Luces de Broadway">Luces de Broadway</option><option value="Un Viaje En-Cantador">Un Viaje En-Cantador</option></optgroup>
+          <optgroup label="Servicios Musicales"><option value="Gala Operistica">Gala Operística</option><option value="Noche de Boleros">Noche de Boleros</option><option value="Cuarteto Vocal">Cuarteto Vocal</option><option value="Noche Bohemia">Noche Bohemia</option><option value="Concierto Navideno">Concierto Navideño</option><option value="Concierto Corporativo">Concierto Corporativo</option></optgroup>
+          <optgroup label="Danza y Show"><option value="Show Danza Contemporanea">Danza Contemporánea</option><option value="Show Jazz">Jazz / Show Dance</option><option value="Ballet">Ballet Clásico</option><option value="Folclor">Folclor Mexicano</option><option value="Fusion">Fusión Danza+Canto</option></optgroup>
+          <optgroup label="Bodas y XV"><option value="Musica Ceremonia">Música Ceremonia</option><option value="Coctel Musical">Cóctel Musical</option><option value="Cena Espectaculo">Cena con Espectáculo</option><option value="Show Boda">Show Boda</option><option value="XV Anos">XV Años</option><option value="Serenata">Serenata</option></optgroup>
+          <optgroup label="Talleres"><option value="Taller Teatro">Teatro</option><option value="Taller Canto">Canto</option><option value="Taller Danza">Danza</option><option value="Taller Musica">Música</option><option value="Taller Cine">Cine</option><option value="Taller LSM">LSM aplicada al Arte</option><option value="Taller Expresion">Expresión Corporal</option><option value="Taller Creacion Escenica">Creación Escénica</option></optgroup>
+          <option value="Otro">Cotización general</option>
+        </select>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Ciudad</label><input type="text" name="ciudad" placeholder="Ciudad de México..."></div>
+        <div class="fg"><label>Fecha aproximada</label><input type="text" name="fecha" placeholder="Mes / año"></div>
+      </div>
+      <div class="fg"><label>Mensaje</label><textarea name="mensaje" placeholder="Cuéntenos sobre su evento..."></textarea></div>
+      <button type="submit" class="form-submit">Enviar solicitud →</button>
+      <p class="form-note">Respondemos en menos de 48 horas · +52 55 7860 0131</p>
+    </form>
+  </div>
+</div>
+
+<nav class="sb-nav">
+  <a href="index.html" class="sb-logo">STUDIO <span>B</span></a>
+  <ul class="sb-nav-links">
+    <li><a href="producciones.html">Producciones</a></li>
+    <li><a href="musica.html">Música</a></li>
+    <li><a href="danza.html">Danza</a></li>
+    <li><a href="bodas.html">Bodas & XV</a></li>
+    <li><a href="talleres.html">Talleres</a></li>
+    <li><a href="taller-escenico.html">Taller Escénico</a></li>
+    <li><a href="#" onclick="openModal('Otro');return false;" class="nav-cta">Contratar →</a></li>
+  </ul>
+  <button class="sb-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="page-hero" style="background:radial-gradient(ellipse at 50% 55%,rgba(201,168,76,.14) 0%,transparent 65%),linear-gradient(180deg,#131008,#0E0D0B);">
+  <p class="sb-eyebrow" style="animation:fadeUp .8s ease .1s both;opacity:0;">Studio B · Laboratorio Permanente · Abril–Julio 2026</p>
+  <h1>TALLER DE<br><em>CREACIÓN</em><br>ESCÉNICA</h1>
+  <p>Laboratorio interdisciplinario de teatro, música y danza. Lunes 18:00–20:00h · Coahuila 184, Col. Roma Sur, CDMX.</p>
+</header>
+
+<section class="sb-section" style="max-width:900px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="reveal">
+    <div>
+      <span class="sb-label">El laboratorio</span>
+      <h2 class="sb-title" style="font-size:2rem;">Un espacio para crear<br><em>desde cero</em></h2>
+      <div class="sb-rule"></div>
+      <p style="font-size:.95rem;color:rgba(245,239,224,.75);line-height:1.8;margin-bottom:1.5rem;">
+        El Taller de Creación Escénica es un laboratorio interdisciplinario que integra teatro, música y danza como herramientas de creación artística. No es una clase convencional: es un espacio de investigación, experimentación y producción escénica.
+      </p>
+      <p style="font-size:.95rem;color:rgba(245,239,224,.75);line-height:1.8;">
+        Dirigido a intérpretes, creadores y artistas escénicos que quieran desarrollar proyectos propios con metodología profesional. En colaboración con FECIJ, Facultad de Cine y Studio B.
+      </p>
+    </div>
+    <div>
+      <div style="border:1px solid rgba(201,168,76,.2);padding:1.8rem;background:var(--ink-soft);margin-bottom:1rem;">
+        <div style="font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Información general</div>
+        <div style="display:grid;gap:.8rem;">
+          <div style="border-left:2px solid rgba(201,168,76,.3);padding-left:.9rem;">
+            <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);">Fechas</div>
+            <div style="font-size:.95rem;color:var(--cream);">Abril – Julio 2026</div>
+          </div>
+          <div style="border-left:2px solid rgba(201,168,76,.3);padding-left:.9rem;">
+            <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);">Horario</div>
+            <div style="font-size:.95rem;color:var(--cream);">Lunes 18:00 – 20:00 horas</div>
+          </div>
+          <div style="border-left:2px solid rgba(201,168,76,.3);padding-left:.9rem;">
+            <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);">Sede</div>
+            <div style="font-size:.95rem;color:var(--cream);">Coahuila 184, Col. Roma Sur, CDMX</div>
+          </div>
+          <div style="border-left:2px solid rgba(201,168,76,.3);padding-left:.9rem;">
+            <div style="font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);">Colaboradores</div>
+            <div style="font-size:.95rem;color:var(--cream);">FECIJ · Facultad de Cine · Studio B</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRECIOS -->
+  <div style="margin-top:3rem;" class="reveal">
+    <span class="sb-label">Inscripción</span>
+    <h3 class="sb-title" style="font-size:1.8rem;margin-bottom:1.5rem;">Tres modalidades<br><em>de acceso</em></h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+      <div style="border:1px solid rgba(201,168,76,.2);padding:2rem;background:var(--ink-soft);">
+        <div style="font-family:var(--font-display);font-size:.9rem;letter-spacing:.12em;color:var(--mist);margin-bottom:.8rem;">GENERAL</div>
+        <div style="font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;">$800</div>
+        <div style="font-size:.78rem;color:var(--mist);margin-top:.3rem;">mensual</div>
+      </div>
+      <div style="border:1px solid var(--gold);padding:2rem;background:var(--ink-soft);position:relative;">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.2rem .8rem;white-space:nowrap;">Más popular</div>
+        <div style="font-family:var(--font-display);font-size:.9rem;letter-spacing:.12em;color:var(--mist);margin-bottom:.8rem;">ESTUDIANTE</div>
+        <div style="font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;">$600</div>
+        <div style="font-size:.78rem;color:var(--mist);margin-top:.3rem;">mensual · credencial vigente</div>
+      </div>
+      <div style="border:1px solid rgba(201,168,76,.2);padding:2rem;background:var(--ink-soft);">
+        <div style="font-family:var(--font-display);font-size:.9rem;letter-spacing:.12em;color:var(--mist);margin-bottom:.8rem;">PAGO COMPLETO</div>
+        <div style="font-family:var(--font-display);font-size:3rem;color:var(--gold);line-height:1;">$2,800</div>
+        <div style="font-size:.78rem;color:var(--mist);margin-top:.3rem;">4 meses · código CEDART aplica</div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;text-align:center;">
+      <a href="https://geerardjk-prog.github.io/Demon/taller.html" target="_blank" class="btn-gold" style="margin-right:1rem;">Inscribirse en línea →</a>
+      <button class="btn-ghost" onclick="openModal('Taller Creacion Escenica')">Solicitar información</button>
+    </div>
+  </div>
+</section>
+
+<!-- NEXO CON OTROS TALLERES -->
+<div class="sb-band">
+  <div style="text-align:center;max-width:600px;margin:0 auto;">
+    <span class="sb-label" style="display:block;text-align:center;">También disponible</span>
+    <h3 class="sb-title" style="font-size:2rem;text-align:center;margin-bottom:1.5rem;">Talleres para escuelas<br><em>e instituciones</em></h3>
+    <p style="font-size:.9rem;color:var(--mist);margin-bottom:1.8rem;">Teatro, canto, danza, música, cine y LSM. Workshops, cursos y programas semestrales para tu institución.</p>
+    <a href="talleres.html" class="btn-ghost">Ver catálogo de talleres →</a>
+  </div>
+</div>
+
+<footer class="sb-footer">
+  <div class="sb-footer-inner">
+    <div class="sb-footer-brand">
+      <a href="index.html" class="sb-logo">STUDIO <span>B</span></a>
+      <p>Producción escénica profesional. Música, teatro y danza para todo tipo de evento. Ciudad de México y toda la república.</p>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Producciones</h4>
+      <a href="producciones.html">Confesiones de Ópera</a>
+      <a href="producciones.html">Luces de Broadway</a>
+      <a href="producciones.html">Un Viaje En-Cantador</a>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Servicios</h4>
+      <a href="musica.html">Servicios Musicales</a>
+      <a href="danza.html">Danza y Show</a>
+      <a href="bodas.html">Bodas y XV Años</a>
+      <a href="talleres.html">Talleres y Cursos</a>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Contacto</h4>
+      <p>+52 55 7860 0131</p>
+      <p>+52 55 4546 2453</p>
+      <a href="https://instagram.com/ensambleb_" target="_blank">@ensambleb_</a>
+      <a href="#" onclick="openModal('Otro');return false;" style="margin-top:.8rem;color:var(--gold);">Solicitar cotización →</a>
+    </div>
+  </div>
+  <div class="sb-footer-bottom">
+    <p>© 2026 Studio B · Ciudad de México · Todos los derechos reservados</p>
+    <p>Artistas egresados de ENAT · ESM · INBAL</p>
+  </div>
+</footer>
+<script src="sb.js"></script>
+
+</body></html>

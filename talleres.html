@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talleres y Cursos · Studio B</title>
+<link rel="stylesheet" href="sb.css">
+</head>
+<body>
+
+<!-- MODAL -->
+<div class="sb-modal-ov" id="sb-modal">
+  <div class="sb-modal">
+    <button class="sb-modal-x" onclick="closeModal()">&#215;</button>
+    <h3>Solicitar información</h3>
+    <p class="sb-modal-sub">Studio B · Ciudad de México</p>
+    <form action="https://formspree.io/f/xnjozedb" method="POST">
+      <input type="hidden" name="_subject" value="Solicitud Studio B">
+      <div class="fg-row">
+        <div class="fg"><label>Nombre</label><input type="text" name="nombre" required placeholder="Su nombre"></div>
+        <div class="fg"><label>Teléfono</label><input type="tel" name="telefono" placeholder="+52 55 0000 0000"></div>
+      </div>
+      <div class="fg"><label>Correo electrónico</label><input type="email" name="email" required placeholder="correo@ejemplo.com"></div>
+      <div class="fg">
+        <label>Servicio de interés</label>
+        <select name="servicio" id="modal-servicio">
+          <optgroup label="Producciones"><option value="Confesiones de Opera">Confesiones de Ópera</option><option value="Luces de Broadway">Luces de Broadway</option><option value="Un Viaje En-Cantador">Un Viaje En-Cantador</option></optgroup>
+          <optgroup label="Servicios Musicales"><option value="Gala Operistica">Gala Operística</option><option value="Noche de Boleros">Noche de Boleros</option><option value="Cuarteto Vocal">Cuarteto Vocal</option><option value="Noche Bohemia">Noche Bohemia</option><option value="Concierto Navideno">Concierto Navideño</option><option value="Concierto Corporativo">Concierto Corporativo</option></optgroup>
+          <optgroup label="Danza y Show"><option value="Show Danza Contemporanea">Danza Contemporánea</option><option value="Show Jazz">Jazz / Show Dance</option><option value="Ballet">Ballet Clásico</option><option value="Folclor">Folclor Mexicano</option><option value="Fusion">Fusión Danza+Canto</option></optgroup>
+          <optgroup label="Bodas y XV"><option value="Musica Ceremonia">Música Ceremonia</option><option value="Coctel Musical">Cóctel Musical</option><option value="Cena Espectaculo">Cena con Espectáculo</option><option value="Show Boda">Show Boda</option><option value="XV Anos">XV Años</option><option value="Serenata">Serenata</option></optgroup>
+          <optgroup label="Talleres"><option value="Taller Teatro">Teatro</option><option value="Taller Canto">Canto</option><option value="Taller Danza">Danza</option><option value="Taller Musica">Música</option><option value="Taller Cine">Cine</option><option value="Taller LSM">LSM aplicada al Arte</option><option value="Taller Expresion">Expresión Corporal</option><option value="Taller Creacion Escenica">Creación Escénica</option></optgroup>
+          <option value="Otro">Cotización general</option>
+        </select>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Ciudad</label><input type="text" name="ciudad" placeholder="Ciudad de México..."></div>
+        <div class="fg"><label>Fecha aproximada</label><input type="text" name="fecha" placeholder="Mes / año"></div>
+      </div>
+      <div class="fg"><label>Mensaje</label><textarea name="mensaje" placeholder="Cuéntenos sobre su evento..."></textarea></div>
+      <button type="submit" class="form-submit">Enviar solicitud →</button>
+      <p class="form-note">Respondemos en menos de 48 horas · +52 55 7860 0131</p>
+    </form>
+  </div>
+</div>
+
+<nav class="sb-nav">
+  <a href="index.html" class="sb-logo">STUDIO <span>B</span></a>
+  <ul class="sb-nav-links">
+    <li><a href="producciones.html">Producciones</a></li>
+    <li><a href="musica.html">Música</a></li>
+    <li><a href="danza.html">Danza</a></li>
+    <li><a href="bodas.html">Bodas & XV</a></li>
+    <li><a href="talleres.html">Talleres</a></li>
+    <li><a href="taller-escenico.html">Taller Escénico</a></li>
+    <li><a href="#" onclick="openModal('Otro');return false;" class="nav-cta">Contratar →</a></li>
+  </ul>
+  <button class="sb-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="page-hero" style="background:radial-gradient(ellipse at 50% 55%,rgba(42,107,110,.28) 0%,transparent 65%),linear-gradient(180deg,#081210,#0E0D0B);">
+  <p class="sb-eyebrow" style="animation:fadeUp .8s ease .1s both;opacity:0;">Studio B · Formación Artística</p>
+  <h1>TAL<em>LE</em><br>RES</h1>
+  <p>Teatro, canto, danza, música, cine, expresión corporal y LSM. Para escuelas, universidades y público general.</p>
+</header>
+<section class="sb-section">
+  <span class="sb-label reveal">Catálogo de talleres y cursos</span>
+  <h2 class="sb-title reveal">Formación artística impartida<br><em>por profesionales en activo</em></h2>
+  <div class="sb-rule reveal"></div>
+
+  <!-- FORMATOS -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem;" class="reveal">
+    <div style="border:1px solid rgba(201,168,76,.2);padding:1.2rem;background:var(--ink-soft);">
+      <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--gold);margin-bottom:.4rem;">WORKSHOP</div>
+      <div style="font-size:.78rem;color:var(--mist);">Sesión única de alto impacto. 3–6 horas. Días de logro y semanas culturales.</div>
+    </div>
+    <div style="border:1px solid rgba(201,168,76,.2);padding:1.2rem;background:var(--ink-soft);">
+      <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--gold);margin-bottom:.4rem;">CURSO 4–8 SES.</div>
+      <div style="font-size:.78rem;color:var(--mist);">Proceso con resultado visible. 1–2 meses. Actividades extracurriculares.</div>
+    </div>
+    <div style="border:1px solid rgba(201,168,76,.2);padding:1.2rem;background:var(--ink-soft);">
+      <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--gold);margin-bottom:.4rem;">SEMESTRAL</div>
+      <div style="font-size:.78rem;color:var(--mist);">Formación continua como materia complementaria. Universidades y preparatorias.</div>
+    </div>
+    <div style="border:1px solid rgba(201,168,76,.2);padding:1.2rem;background:var(--ink-soft);">
+      <div style="font-family:var(--font-display);font-size:1.1rem;color:var(--gold);margin-bottom:.4rem;">COMBO DEMO</div>
+      <div style="font-size:.78rem;color:var(--mist);">Espectáculo + taller participativo. 70–90 min. Máximo impacto educativo.</div>
+    </div>
+  </div>
+
+  <div class="sb-grid" style="gap:1.2rem;">
+<div class="svc-card reveal">
+  <div class="svc-card-name">Taller de Teatro y Actuación</div>
+  <p class="svc-card-desc">Presencia escénica, improvisación, construcción de personaje y escenas cortas. Fomenta confianza, expresión y trabajo en equipo. Para cualquier nivel educativo.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">Grupos de hasta 30 personas</span>
+    <span class="svc-pill">Workshop · 4–8 sesiones · Semestral</span>
+  </div>
+  <span class="svc-price">Desde $3,500 / sesión — $18,000 / curso completo <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Taller Teatro')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Taller de Canto y Técnica Vocal</div>
+  <p class="svc-card-desc">Respiración, resonancia, dicción y repertorio. El alumno descubre y desarrolla su voz con herramientas de la formación profesional adaptadas a estudiantes sin experiencia previa.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">Grupos de hasta 20 personas</span>
+    <span class="svc-pill">Workshop · 4–8 sesiones · Semestral</span>
+  </div>
+  <span class="svc-price">Desde $3,500 / sesión — $18,000 / curso completo <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Taller Canto')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Taller de Danza · Contemporánea, Jazz o Folclor</div>
+  <p class="svc-card-desc">Calentamiento, técnica básica, frase coreográfica y presentación final. Alta participación y resultado visible desde la primera sesión. Estilo a elección del plantel.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">Grupos de hasta 25 personas</span>
+    <span class="svc-pill">Workshop · 4–8 sesiones · Semestral</span>
+  </div>
+  <span class="svc-price">Desde $3,500 / sesión — $18,000 / curso completo <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Taller Danza')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Taller de Música · Piano, Violín o Teoría Musical</div>
+  <p class="svc-card-desc">Iniciación musical con instrumento en vivo. Teoría, lectura de notas, práctica instrumental y música de conjunto. Ideal como complemento curricular o actividad extracurricular.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">Grupos de hasta 15 personas</span>
+    <span class="svc-pill">Workshop · 4–8 sesiones · Semestral</span>
+  </div>
+  <span class="svc-price">Desde $3,500 / sesión — $18,000 / curso completo <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Taller Musica')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Taller de Cine y Actuación para Cámara</div>
+  <p class="svc-card-desc">Diferencias entre actuación teatral y cinematográfica, continuidad, close-up y trabajo frente a cámara. Los alumnos graban escenas cortas y reciben retroalimentación.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">Grupos de hasta 20 personas</span>
+    <span class="svc-pill">Workshop 1 día · 4–8 sesiones</span>
+  </div>
+  <span class="svc-price">Desde $4,000 / sesión — $20,000 / curso completo <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Taller Cine')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Taller de Expresión Corporal y Movimiento Escénico</div>
+  <p class="svc-card-desc">Conciencia corporal, manejo del espacio, ritmo y comunicación no verbal. Herramientas del teatro físico. Excelente para cohesión grupal, confianza y expresión.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">Grupos de hasta 30 personas</span>
+    <span class="svc-pill">Workshop · 4–8 sesiones · Semestral</span>
+  </div>
+  <span class="svc-price">Desde $3,500 / sesión — $18,000 / curso completo <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Taller Expresion')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Taller de LSM Aplicada al Arte</div>
+  <p class="svc-card-desc">Lengua de Señas Mexicana integrada al canto, la danza y la actuación. Único en su tipo en México. Fomenta la inclusión y el desarrollo artístico. Ideal para escuelas con enfoque en derechos humanos.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">Grupos de hasta 20 personas</span>
+    <span class="svc-pill">Workshop 1 día · 4–8 sesiones</span>
+  </div>
+  <span class="svc-price">Desde $4,000 / sesión — $20,000 / curso completo <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Taller LSM')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Demo-Concierto + Taller Corto (Combo)</div>
+  <p class="svc-card-desc">Espectáculo profesional de 40 min seguido de taller participativo de 30 min. Los alumnos prueban técnica vocal, movimiento o ritmo en vivo. La opción de mayor impacto educativo.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">Hasta 60 alumnos</span>
+    <span class="svc-pill">70 – 80 min total</span>
+  </div>
+  <span class="svc-price">$12,000 — $20,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Combo Demo Taller')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div></div>
+  <div style="margin-top:1.5rem;padding:1.2rem;background:var(--ink-soft);border:1px solid rgba(201,168,76,.1);">
+    <p style="font-size:.78rem;color:var(--mist);text-align:center;">* MXN sin IVA · Grupos hasta 30 alumnos por sesión · Paquetes multigrupo con descuento · Viáticos $5,000 fuera de CDMX</p>
+  </div>
+
+  <!-- NEXO: TALLER ESCÉNICO -->
+  <div style="margin-top:4rem;padding:2.5rem;background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(14,13,11,.8));border:1px solid rgba(201,168,76,.25);" class="reveal">
+    <div style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;flex-wrap:wrap;">
+      <div>
+        <span style="font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;display:block;">Laboratorio permanente · Lunes 18:00h</span>
+        <div style="font-family:var(--font-display);font-size:2rem;color:var(--cream);margin-bottom:.5rem;">TALLER DE CREACIÓN ESCÉNICA</div>
+        <p style="font-size:.9rem;color:var(--mist);max-width:520px;">Laboratorio interdisciplinario de teatro, música y danza. Abril–Julio 2026. Coahuila 184, Col. Roma Sur, CDMX. En colaboración con FECIJ, Facultad de Cine y Studio B.</p>
+      </div>
+      <a href="taller-escenico.html" class="btn-gold" style="white-space:nowrap;">Ver información →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="sb-footer">
+  <div class="sb-footer-inner">
+    <div class="sb-footer-brand">
+      <a href="index.html" class="sb-logo">STUDIO <span>B</span></a>
+      <p>Producción escénica profesional. Música, teatro y danza para todo tipo de evento. Ciudad de México y toda la república.</p>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Producciones</h4>
+      <a href="producciones.html">Confesiones de Ópera</a>
+      <a href="producciones.html">Luces de Broadway</a>
+      <a href="producciones.html">Un Viaje En-Cantador</a>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Servicios</h4>
+      <a href="musica.html">Servicios Musicales</a>
+      <a href="danza.html">Danza y Show</a>
+      <a href="bodas.html">Bodas y XV Años</a>
+      <a href="talleres.html">Talleres y Cursos</a>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Contacto</h4>
+      <p>+52 55 7860 0131</p>
+      <p>+52 55 4546 2453</p>
+      <a href="https://instagram.com/ensambleb_" target="_blank">@ensambleb_</a>
+      <a href="#" onclick="openModal('Otro');return false;" style="margin-top:.8rem;color:var(--gold);">Solicitar cotización →</a>
+    </div>
+  </div>
+  <div class="sb-footer-bottom">
+    <p>© 2026 Studio B · Ciudad de México · Todos los derechos reservados</p>
+    <p>Artistas egresados de ENAT · ESM · INBAL</p>
+  </div>
+</footer>
+<script src="sb.js"></script>
+
+</body></html>

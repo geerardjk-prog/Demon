@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Música en Vivo · Studio B</title>
+<link rel="stylesheet" href="sb.css">
+</head>
+<body>
+
+<!-- MODAL -->
+<div class="sb-modal-ov" id="sb-modal">
+  <div class="sb-modal">
+    <button class="sb-modal-x" onclick="closeModal()">&#215;</button>
+    <h3>Solicitar información</h3>
+    <p class="sb-modal-sub">Studio B · Ciudad de México</p>
+    <form action="https://formspree.io/f/xnjozedb" method="POST">
+      <input type="hidden" name="_subject" value="Solicitud Studio B">
+      <div class="fg-row">
+        <div class="fg"><label>Nombre</label><input type="text" name="nombre" required placeholder="Su nombre"></div>
+        <div class="fg"><label>Teléfono</label><input type="tel" name="telefono" placeholder="+52 55 0000 0000"></div>
+      </div>
+      <div class="fg"><label>Correo electrónico</label><input type="email" name="email" required placeholder="correo@ejemplo.com"></div>
+      <div class="fg">
+        <label>Servicio de interés</label>
+        <select name="servicio" id="modal-servicio">
+          <optgroup label="Producciones"><option value="Confesiones de Opera">Confesiones de Ópera</option><option value="Luces de Broadway">Luces de Broadway</option><option value="Un Viaje En-Cantador">Un Viaje En-Cantador</option></optgroup>
+          <optgroup label="Servicios Musicales"><option value="Gala Operistica">Gala Operística</option><option value="Noche de Boleros">Noche de Boleros</option><option value="Cuarteto Vocal">Cuarteto Vocal</option><option value="Noche Bohemia">Noche Bohemia</option><option value="Concierto Navideno">Concierto Navideño</option><option value="Concierto Corporativo">Concierto Corporativo</option></optgroup>
+          <optgroup label="Danza y Show"><option value="Show Danza Contemporanea">Danza Contemporánea</option><option value="Show Jazz">Jazz / Show Dance</option><option value="Ballet">Ballet Clásico</option><option value="Folclor">Folclor Mexicano</option><option value="Fusion">Fusión Danza+Canto</option></optgroup>
+          <optgroup label="Bodas y XV"><option value="Musica Ceremonia">Música Ceremonia</option><option value="Coctel Musical">Cóctel Musical</option><option value="Cena Espectaculo">Cena con Espectáculo</option><option value="Show Boda">Show Boda</option><option value="XV Anos">XV Años</option><option value="Serenata">Serenata</option></optgroup>
+          <optgroup label="Talleres"><option value="Taller Teatro">Teatro</option><option value="Taller Canto">Canto</option><option value="Taller Danza">Danza</option><option value="Taller Musica">Música</option><option value="Taller Cine">Cine</option><option value="Taller LSM">LSM aplicada al Arte</option><option value="Taller Expresion">Expresión Corporal</option><option value="Taller Creacion Escenica">Creación Escénica</option></optgroup>
+          <option value="Otro">Cotización general</option>
+        </select>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Ciudad</label><input type="text" name="ciudad" placeholder="Ciudad de México..."></div>
+        <div class="fg"><label>Fecha aproximada</label><input type="text" name="fecha" placeholder="Mes / año"></div>
+      </div>
+      <div class="fg"><label>Mensaje</label><textarea name="mensaje" placeholder="Cuéntenos sobre su evento..."></textarea></div>
+      <button type="submit" class="form-submit">Enviar solicitud →</button>
+      <p class="form-note">Respondemos en menos de 48 horas · +52 55 7860 0131</p>
+    </form>
+  </div>
+</div>
+
+<nav class="sb-nav">
+  <a href="index.html" class="sb-logo">STUDIO <span>B</span></a>
+  <ul class="sb-nav-links">
+    <li><a href="producciones.html">Producciones</a></li>
+    <li><a href="musica.html">Música</a></li>
+    <li><a href="danza.html">Danza</a></li>
+    <li><a href="bodas.html">Bodas & XV</a></li>
+    <li><a href="talleres.html">Talleres</a></li>
+    <li><a href="taller-escenico.html">Taller Escénico</a></li>
+    <li><a href="#" onclick="openModal('Otro');return false;" class="nav-cta">Contratar →</a></li>
+  </ul>
+  <button class="sb-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="page-hero" style="background:radial-gradient(ellipse at 50% 55%,rgba(201,168,76,.18) 0%,transparent 65%),linear-gradient(180deg,#141008,#0E0D0B);">
+  <p class="sb-eyebrow" style="animation:fadeUp .8s ease .1s both;opacity:0;">Studio B · Servicios Musicales</p>
+  <h1>MÚ<em>SI</em><br>CA</h1>
+  <p>Galas operísticas, boleros, cuartetos, Broadway y más. De 1 a 8 intérpretes profesionales.</p>
+</header>
+<section class="sb-section">
+  <span class="sb-label reveal">Catálogo de servicios musicales</span>
+  <h2 class="sb-title reveal">Música en vivo de<br><em>nivel institucional</em></h2>
+  <div class="sb-rule reveal"></div>
+  <p class="reveal" style="font-size:.95rem;color:rgba(245,239,224,.7);max-width:600px;margin-bottom:3rem;">Todos nuestros intérpretes son egresados de ENAT, ESM e INBAL. Repertorio a la carta, elenco flexible y producción profesional garantizada.</p>
+  <div class="sb-grid" style="gap:1.2rem;">
+<div class="svc-card reveal">
+  <div class="svc-card-name">Gala Operística</div>
+  <p class="svc-card-desc">Selección de arias, dúos y cuartetos del repertorio operístico universal (Verdi, Puccini, Mozart, Donizetti). Máxima elegancia para cenas de gala, aniversarios y reconocimientos institucionales. Repertorio personalizable.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">2 a 4 cantantes + piano</span>
+    <span class="svc-pill">45 – 75 min</span>
+  </div>
+  <span class="svc-price">$18,000 — $35,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Gala Operistica')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Cuarteto Vocal de Cámara</div>
+  <p class="svc-card-desc">Cuatro voces profesionales en programa mixto: ópera, zarzuela, canción de arte y Broadway. La opción más versátil del catálogo: funciona como apertura, musicalización de cóctel o espectáculo central.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">4 voces + piano</span>
+    <span class="svc-pill">45 – 60 min</span>
+  </div>
+  <span class="svc-price">$25,000 — $38,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Cuarteto Vocal')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Noche de Boleros</div>
+  <p class="svc-card-desc">Agustín Lara, Armando Manzanero, María Grever, Los Panchos. El repertorio más querido de la canción romántica latinoamericana interpretado con rigor académico. Cálido, elegante y multigeneracional.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">2 a 3 intérpretes + piano o guitarra</span>
+    <span class="svc-pill">45 – 75 min</span>
+  </div>
+  <span class="svc-price">$12,000 — $22,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Noche de Boleros')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Noche Bohemia</div>
+  <p class="svc-card-desc">Bolero, ranchera de arte y canción latinoamericana interpretada con formación de élite. Elegante sin ser solemne; perfecto para empresas que buscan un toque mexicano auténtico.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">2 a 4 intérpretes + piano o guitarra</span>
+    <span class="svc-pill">45 – 75 min</span>
+  </div>
+  <span class="svc-price">$12,000 — $20,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Noche Bohemia')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Concierto de Broadway Corporativo</div>
+  <p class="svc-card-desc">Los grandes títulos del teatro musical internacional: Les Misérables, Phantom, Mamma Mia!, Lion King, La La Land. Formato dinámico para eventos de fin de año y lanzamientos.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">4 a 8 intérpretes + piano y percusión</span>
+    <span class="svc-pill">60 – 90 min</span>
+  </div>
+  <span class="svc-price">$28,000 — $55,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Concierto Corporativo')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Recital de Canción de Arte Latinoamericana</div>
+  <p class="svc-card-desc">Ponce, Ginastera, Grever, Moreno, Villa-Lobos. Para instituciones culturales, embajadas, museos y eventos de alto perfil cultural.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">1 a 2 intérpretes + piano</span>
+    <span class="svc-pill">45 – 70 min</span>
+  </div>
+  <span class="svc-price">$15,000 — $25,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Recital Cancion Arte')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Concierto Navideño</div>
+  <p class="svc-card-desc">Villancicos clásicos internacionales y música mexicana de temporada. Para posadas de empresa, hoteles y clubes privados. Disponible en formato 3 a 6 intérpretes.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">3 a 6 intérpretes + piano</span>
+    <span class="svc-pill">45 – 75 min</span>
+  </div>
+  <span class="svc-price">$20,000 — $45,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Concierto Navideno')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Musicalización de Ceremonia Institucional</div>
+  <p class="svc-card-desc">Apertura o cierre musical para graduaciones, entrega de premios e inauguraciones. Repertorio solemne, emotivo o celebratorio según el tono del evento.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">1 a 3 intérpretes + piano</span>
+    <span class="svc-pill">20 – 40 min</span>
+  </div>
+  <span class="svc-price">$8,000 — $15,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Musicalizacion Ceremonia')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Cóctel Musical</div>
+  <p class="svc-card-desc">Música en vivo de alta calidad como fondo sonoro para recepciones y vernissages. Sofisticado sin interferir con la conversación. Jazz, ópera, bolero o Broadway a elección.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">1 a 2 intérpretes + piano</span>
+    <span class="svc-pill">60 – 120 min</span>
+  </div>
+  <span class="svc-price">$10,000 — $18,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Coctel Musical')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div>
+<div class="svc-card reveal">
+  <div class="svc-card-name">Concierto Corporativo a la Carta</div>
+  <p class="svc-card-desc">El cliente elige géneros, duración y formato. Studio B diseña un programa completamente personalizado. Ideal para empresas que quieren algo único cada año.</p>
+  <div class="svc-card-meta">
+    <span class="svc-pill">2 a 8 intérpretes</span>
+    <span class="svc-pill">45 – 90 min</span>
+  </div>
+  <span class="svc-price">Desde $20,000 <span class="svc-price-note">MXN + IVA · Viáticos $5,000 fuera de CDMX</span></span>
+  <button class="btn-gold" onclick="openModal('Concierto Corporativo')" style="font-size:.78rem;padding:.75rem 1.6rem;">Solicitar información →</button>
+</div></div>
+  <div style="margin-top:1.5rem;padding:1.2rem;background:var(--ink-soft);border:1px solid rgba(201,168,76,.1);">
+    <p style="font-size:.78rem;color:var(--mist);text-align:center;">* MXN sin IVA · Viáticos $5,000 fuera de CDMX · Precios según número de intérpretes y duración</p>
+  </div>
+</section>
+
+<footer class="sb-footer">
+  <div class="sb-footer-inner">
+    <div class="sb-footer-brand">
+      <a href="index.html" class="sb-logo">STUDIO <span>B</span></a>
+      <p>Producción escénica profesional. Música, teatro y danza para todo tipo de evento. Ciudad de México y toda la república.</p>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Producciones</h4>
+      <a href="producciones.html">Confesiones de Ópera</a>
+      <a href="producciones.html">Luces de Broadway</a>
+      <a href="producciones.html">Un Viaje En-Cantador</a>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Servicios</h4>
+      <a href="musica.html">Servicios Musicales</a>
+      <a href="danza.html">Danza y Show</a>
+      <a href="bodas.html">Bodas y XV Años</a>
+      <a href="talleres.html">Talleres y Cursos</a>
+    </div>
+    <div class="sb-footer-col">
+      <h4>Contacto</h4>
+      <p>+52 55 7860 0131</p>
+      <p>+52 55 4546 2453</p>
+      <a href="https://instagram.com/ensambleb_" target="_blank">@ensambleb_</a>
+      <a href="#" onclick="openModal('Otro');return false;" style="margin-top:.8rem;color:var(--gold);">Solicitar cotización →</a>
+    </div>
+  </div>
+  <div class="sb-footer-bottom">
+    <p>© 2026 Studio B · Ciudad de México · Todos los derechos reservados</p>
+    <p>Artistas egresados de ENAT · ESM · INBAL</p>
+  </div>
+</footer>
+<script src="sb.js"></script>
+
+</body></html>
